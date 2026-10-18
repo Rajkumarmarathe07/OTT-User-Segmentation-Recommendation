@@ -208,13 +208,6 @@ npm run build
 
 The frontend test suite uses Node's built-in test runner. Build output may
 include a Vite bundle-size advisory from Recharts; it does not prevent a
-successful build.
+successful build
 
-## Screenshots
 
-Dashboard captured from the running application and current dataset:
-
-![OTT customer analytics dashboard](screenshots/dashboard.png)
-
-The image shows actual loaded dashboard metrics, not placeholder data. Customer
-screenshots are intentionally omitted to avoid including customer identifiers.
