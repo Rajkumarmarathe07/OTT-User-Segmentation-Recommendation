@@ -1,0 +1,510 @@
+{
+  "model_version": "random-forest-20261018T110500Z",
+  "trained_at": "2026-10-18T11:05:00.156070+00:00",
+  "dataset": {
+    "path": "data\\ott_users.csv",
+    "rows": 5000,
+    "class_distribution": {
+      "0": 2485,
+      "1": 2515
+    }
+  },
+  "split": {
+    "strategy": "stratified random train/test split",
+    "test_size": 0.2,
+    "random_state": 42,
+    "train_records": 4000,
+    "test_records": 1000
+  },
+  "features": [
+    "age",
+    "gender",
+    "subscription_type",
+    "watch_hours",
+    "last_login_days",
+    "region",
+    "device",
+    "monthly_fee",
+    "payment_method",
+    "number_of_profiles",
+    "avg_watch_time_per_day",
+    "favorite_genre"
+  ],
+  "leakage_review": {
+    "target_excluded_from_features": true,
+    "identifier_excluded_from_features": true,
+    "timestamp_features_available": false,
+    "time_based_evaluation": {
+      "available": false,
+      "reason": "The dataset has no usable observation or event timestamp."
+    },
+    "prediction_time_note": "Inputs are the non-target columns available in this customer snapshot. Their freshness at a real prediction time cannot be verified because the dataset has no observation timestamps."
+  },
+  "threshold_explanation": "A lower threshold flags more customers: this usually increases recall and false positives. A higher threshold flags fewer customers: this usually reduces false positives but misses more churners (false negatives). Use the displayed holdout metrics to choose an operational tradeoff.",
+  "risk_bands": {
+    "low_below": 0.33,
+    "medium_below": 0.66,
+    "high_at_or_above": 0.66
+  },
+  "models": {
+    "majority_baseline": {
+      "metrics": {
+        "threshold": 0.5,
+        "accuracy": 0.503,
+        "precision": 0.503,
+        "recall": 1.0,
+        "f1": 0.66933,
+        "roc_auc": 0.5,
+        "pr_auc": 0.503,
+        "confusion_matrix": {
+          "labels": [
+            0,
+            1
+          ],
+          "true_negative": 0,
+          "false_positive": 497,
+          "false_negative": 0,
+          "true_positive": 503
+        }
+      },
+      "threshold_tradeoff": {
+        "0.25": {
+          "threshold": 0.25,
+          "accuracy": 0.503,
+          "precision": 0.503,
+          "recall": 1.0,
+          "f1": 0.66933,
+          "roc_auc": 0.5,
+          "pr_auc": 0.503,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 0,
+            "false_positive": 497,
+            "false_negative": 0,
+            "true_positive": 503
+          }
+        },
+        "0.5": {
+          "threshold": 0.5,
+          "accuracy": 0.503,
+          "precision": 0.503,
+          "recall": 1.0,
+          "f1": 0.66933,
+          "roc_auc": 0.5,
+          "pr_auc": 0.503,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 0,
+            "false_positive": 497,
+            "false_negative": 0,
+            "true_positive": 503
+          }
+        },
+        "0.75": {
+          "threshold": 0.75,
+          "accuracy": 0.503,
+          "precision": 0.503,
+          "recall": 1.0,
+          "f1": 0.66933,
+          "roc_auc": 0.5,
+          "pr_auc": 0.503,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 0,
+            "false_positive": 497,
+            "false_negative": 0,
+            "true_positive": 503
+          }
+        }
+      },
+      "class_distribution": {
+        "train": {
+          "0": 1988,
+          "1": 2012
+        },
+        "test": {
+          "0": 497,
+          "1": 503
+        }
+      },
+      "probability_range": [
+        1.0,
+        1.0
+      ]
+    },
+    "logistic_regression": {
+      "metrics": {
+        "threshold": 0.5,
+        "accuracy": 0.89,
+        "precision": 0.87861,
+        "recall": 0.90656,
+        "f1": 0.89237,
+        "roc_auc": 0.9675,
+        "pr_auc": 0.96919,
+        "confusion_matrix": {
+          "labels": [
+            0,
+            1
+          ],
+          "true_negative": 434,
+          "false_positive": 63,
+          "false_negative": 47,
+          "true_positive": 456
+        }
+      },
+      "threshold_tradeoff": {
+        "0.25": {
+          "threshold": 0.25,
+          "accuracy": 0.868,
+          "precision": 0.8046,
+          "recall": 0.97416,
+          "f1": 0.88129,
+          "roc_auc": 0.9675,
+          "pr_auc": 0.96919,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 378,
+            "false_positive": 119,
+            "false_negative": 13,
+            "true_positive": 490
+          }
+        },
+        "0.5": {
+          "threshold": 0.5,
+          "accuracy": 0.89,
+          "precision": 0.87861,
+          "recall": 0.90656,
+          "f1": 0.89237,
+          "roc_auc": 0.9675,
+          "pr_auc": 0.96919,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 434,
+            "false_positive": 63,
+            "false_negative": 47,
+            "true_positive": 456
+          }
+        },
+        "0.75": {
+          "threshold": 0.75,
+          "accuracy": 0.878,
+          "precision": 0.93995,
+          "recall": 0.80915,
+          "f1": 0.86966,
+          "roc_auc": 0.9675,
+          "pr_auc": 0.96919,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 471,
+            "false_positive": 26,
+            "false_negative": 96,
+            "true_positive": 407
+          }
+        }
+      },
+      "class_distribution": {
+        "train": {
+          "0": 1988,
+          "1": 2012
+        },
+        "test": {
+          "0": 497,
+          "1": 503
+        }
+      },
+      "probability_range": [
+        0.0,
+        0.99999
+      ]
+    },
+    "gradient_boosting": {
+      "metrics": {
+        "threshold": 0.5,
+        "accuracy": 0.988,
+        "precision": 0.99002,
+        "recall": 0.98608,
+        "f1": 0.98805,
+        "roc_auc": 0.99805,
+        "pr_auc": 0.99816,
+        "confusion_matrix": {
+          "labels": [
+            0,
+            1
+          ],
+          "true_negative": 492,
+          "false_positive": 5,
+          "false_negative": 7,
+          "true_positive": 496
+        }
+      },
+      "threshold_tradeoff": {
+        "0.25": {
+          "threshold": 0.25,
+          "accuracy": 0.971,
+          "precision": 0.95402,
+          "recall": 0.99006,
+          "f1": 0.97171,
+          "roc_auc": 0.99805,
+          "pr_auc": 0.99816,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 473,
+            "false_positive": 24,
+            "false_negative": 5,
+            "true_positive": 498
+          }
+        },
+        "0.5": {
+          "threshold": 0.5,
+          "accuracy": 0.988,
+          "precision": 0.99002,
+          "recall": 0.98608,
+          "f1": 0.98805,
+          "roc_auc": 0.99805,
+          "pr_auc": 0.99816,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 492,
+            "false_positive": 5,
+            "false_negative": 7,
+            "true_positive": 496
+          }
+        },
+        "0.75": {
+          "threshold": 0.75,
+          "accuracy": 0.981,
+          "precision": 0.99794,
+          "recall": 0.96421,
+          "f1": 0.98079,
+          "roc_auc": 0.99805,
+          "pr_auc": 0.99816,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 496,
+            "false_positive": 1,
+            "false_negative": 18,
+            "true_positive": 485
+          }
+        }
+      },
+      "class_distribution": {
+        "train": {
+          "0": 1988,
+          "1": 2012
+        },
+        "test": {
+          "0": 497,
+          "1": 503
+        }
+      },
+      "probability_range": [
+        0.0003,
+        0.99958
+      ]
+    },
+    "random_forest": {
+      "metrics": {
+        "threshold": 0.5,
+        "accuracy": 0.983,
+        "precision": 0.986,
+        "recall": 0.98012,
+        "f1": 0.98305,
+        "roc_auc": 0.99796,
+        "pr_auc": 0.99809,
+        "confusion_matrix": {
+          "labels": [
+            0,
+            1
+          ],
+          "true_negative": 490,
+          "false_positive": 7,
+          "false_negative": 10,
+          "true_positive": 493
+        }
+      },
+      "threshold_tradeoff": {
+        "0.25": {
+          "threshold": 0.25,
+          "accuracy": 0.92,
+          "precision": 0.86403,
+          "recall": 0.99801,
+          "f1": 0.9262,
+          "roc_auc": 0.99796,
+          "pr_auc": 0.99809,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 418,
+            "false_positive": 79,
+            "false_negative": 1,
+            "true_positive": 502
+          }
+        },
+        "0.5": {
+          "threshold": 0.5,
+          "accuracy": 0.983,
+          "precision": 0.986,
+          "recall": 0.98012,
+          "f1": 0.98305,
+          "roc_auc": 0.99796,
+          "pr_auc": 0.99809,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 490,
+            "false_positive": 7,
+            "false_negative": 10,
+            "true_positive": 493
+          }
+        },
+        "0.75": {
+          "threshold": 0.75,
+          "accuracy": 0.946,
+          "precision": 1.0,
+          "recall": 0.89264,
+          "f1": 0.94328,
+          "roc_auc": 0.99796,
+          "pr_auc": 0.99809,
+          "confusion_matrix": {
+            "labels": [
+              0,
+              1
+            ],
+            "true_negative": 497,
+            "false_positive": 0,
+            "false_negative": 54,
+            "true_positive": 449
+          }
+        }
+      },
+      "class_distribution": {
+        "train": {
+          "0": 1988,
+          "1": 2012
+        },
+        "test": {
+          "0": 497,
+          "1": 503
+        }
+      },
+      "probability_range": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "persisted_model": "random_forest",
+  "feature_importance": [
+    {
+      "feature": "numeric__avg_watch_time_per_day",
+      "importance": 0.3412626
+    },
+    {
+      "feature": "numeric__watch_hours",
+      "importance": 0.2081339
+    },
+    {
+      "feature": "numeric__last_login_days",
+      "importance": 0.1821518
+    },
+    {
+      "feature": "numeric__number_of_profiles",
+      "importance": 0.0622485
+    },
+    {
+      "feature": "numeric__age",
+      "importance": 0.0278085
+    },
+    {
+      "feature": "categorical__subscription_type_Basic",
+      "importance": 0.0162122
+    },
+    {
+      "feature": "categorical__payment_method_Crypto",
+      "importance": 0.0146523
+    },
+    {
+      "feature": "numeric__monthly_fee",
+      "importance": 0.0144592
+    },
+    {
+      "feature": "categorical__payment_method_Gift Card",
+      "importance": 0.012293
+    },
+    {
+      "feature": "categorical__payment_method_Debit Card",
+      "importance": 0.0077883
+    },
+    {
+      "feature": "categorical__payment_method_Credit Card",
+      "importance": 0.0070653
+    },
+    {
+      "feature": "categorical__payment_method_PayPal",
+      "importance": 0.0068073
+    },
+    {
+      "feature": "categorical__subscription_type_Premium",
+      "importance": 0.0059664
+    },
+    {
+      "feature": "categorical__subscription_type_Standard",
+      "importance": 0.0055275
+    },
+    {
+      "feature": "categorical__gender_Other",
+      "importance": 0.0050428
+    },
+    {
+      "feature": "categorical__gender_Male",
+      "importance": 0.0050399
+    },
+    {
+      "feature": "categorical__gender_Female",
+      "importance": 0.0050049
+    },
+    {
+      "feature": "categorical__region_South America",
+      "importance": 0.0048076
+    },
+    {
+      "feature": "categorical__device_Mobile",
+      "importance": 0.0045494
+    },
+    {
+      "feature": "categorical__device_TV",
+      "importance": 0.0045387
+    }
+  ]
+}
